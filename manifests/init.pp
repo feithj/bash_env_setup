@@ -30,11 +30,11 @@ $sc = "sourcecode"
     submodules => true,
   }
 
-  vcsrepo { "${envpath}/${sc}/buildscripts":
-    ensure   => latest,
-    provider => git,
-    source   => 'git@fanlvgit1p.ops.invesco.net:sysadmin/buildscripts.git',
-  }
+#  vcsrepo { "${envpath}/${sc}/buildscripts":
+#    ensure   => latest,
+#    provider => git,
+#    source   => 'git@fanlvgit1p.ops.invesco.net:sysadmin/buildscripts.git',
+#  }
 
 # Setting up environment variables
   file { "${envpath}/vimrc":
