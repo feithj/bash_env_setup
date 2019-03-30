@@ -16,7 +16,7 @@ $sc = "sourcecode"
 
   file { "${envpath}/${sc}":
     ensure => 'directory',
-    path   => "${home}/${sc}",
+    path   => "${envpath}/${sc}",
     owner  => "${userenv}",
     group  => "${userenv}",
     mode   => '0744',
