@@ -1,0 +1,108 @@
+
+#-------------------------------------------------------------------------------
+# Some Variables
+#-------------------------------------------------------------------------------
+
+alf=~/.aliases
+
+
+#-------------------------------------------------------------------------------
+# Sourcing some files
+#-------------------------------------------------------------------------------
+if [ -f ${alf} ] ; then
+  . /.${alf}
+fi
+
+
+case ${SHELL} in
+*bash)
+    typeset +x PS1="\u@\h:\w\\$ "
+    ;;
+esac
+
+#-------------------------------------------------------------------------------
+# Prompt Setup
+#-------------------------------------------------------------------------------
+
+PS1='\[\e[1;31m\]\u\
+\[\e[1;34m\]@\[\e[1;31m\]`uname -n`\
+\[\e[1;34m\]:\[\e[1;3m\]`pwd`\
+\[\e[1;34m\] #\[\e[0m'
+
+# Load GIT and puppet variables
+[[ -f ~/.bashrc.puppet ]] && source ~/.bashrc.puppet
+
+#-------------------------------------------------------------------------------
+# PATH Setup
+#-------------------------------------------------------------------------------
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/opt/puppetlabs/bin
+export CDPATH=~/sourcecode:~/notes                                  # Shortcuts your cd path
+
+#-------------------------------------------------------------------------------
+# Bash options...
+#-------------------------------------------------------------------------------
+shopt -s histappend         # appends bash history from multiple tty/ssh sessions
+shopt -s cdspell            # auto corrects typos on tab completion for cd
+
+#-------------------------------------------------------------------------------
+# Custom Info Dump
+#-------------------------------------------------------------------------------
+echo -e ""
+echo -e "--------------------------------------------------------------"
+echo -e "| Hostname: `hostname`"
+echo -e "| IP: `ifconfig -a| grep 10| grep inet| awk '{print $2}'`"
+echo -e "--------------------------------------------------------------"
+echo -e ""
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME: gitadd
+#   DESCRIPTION: quick pushes to git repo
+#    PARAMETERS: just pass the comment you want with the commit
+#       RETURNS:
+#-------------------------------------------------------------------------------
+
+gitadd ()
+{
+  echo "Commiting: `pwd` - $*"
+  git add .
+  git commit -m "$*"
+  git push
+
+} # ----------  end of function gitadd  ----------
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME: tcpcheck
+#   DESCRIPTION: quick easy way to see if port is listening
+#    PARAMETERS: pass ip/fqdn and port
+#       RETURNS:
+#-------------------------------------------------------------------------------
+tcpcheck()
+{
+  if [ -z "${1}" ] ; then
+    echo -e ""
+    echo -e "Usage: tcpcheck <ip-address> <port>"
+    echo -e ""
+  else
+    echo > /dev/tcp/${1}/${2}
+    if [ "$?" = "0" ] ; then
+      echo -e "Port is accepting connections"
+    fi
+  fi
+}
+
+#-------------------------------------------------------------------------------
+# Add some color to LESS/MAN pages and grep
+#-------------------------------------------------------------------------------
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;33m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;42;30m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export GREP_OPTIONS='--color=auto'
+
+# Setting PATH for Python 3.6
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH

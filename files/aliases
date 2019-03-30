@@ -1,0 +1,80 @@
+
+
+
+
+
+#-------------------------------------------------------------------------------
+# GP Server Aliases
+#------------------------------------------------------------------------------
+alias f5ap='ssh feithj@10.181.54.1'
+alias f5bp='ssh feithj@10.181.54.3'
+alias f5cp='ssh feithj@10.181.54.5'
+
+alias gp01='ssh feithj@10.181.54.51'
+alias gp02='ssh feithj@10.181.54.52'
+alias gp03='ssh feithj@10.181.54.53'
+alias gp04='ssh feithj@10.181.54.54'
+alias gp05='ssh feithj@10.181.54.55'
+alias gp06='ssh feithj@10.181.54.56'
+alias gp07='ssh feithj@10.181.54.57'
+alias gp08='ssh feithj@10.181.54.58'
+alias gp10='ssh feithj@10.181.54.60'
+
+alias okmld1='ssh feithj@10.195.21.1'
+#-------------------------------------------------------------------------------
+# Amazon Frankfurt Server Aliases
+#------------------------------------------------------------------------------
+alias awfr101='ssh feithj@10.133.196.111'
+alias awfr102='ssh feithj@10.133.196.254'
+
+#-------------------------------------------------------------------------------
+# Amazon Ohio Dev Server Aliases
+#------------------------------------------------------------------------------
+alias awod102='ssh feithj@10.175.4.113'
+
+#-------------------------------------------------------------------------------
+# Amazon EAST 1 Dev Server Aliases
+#------------------------------------------------------------------------------
+alias awrstud1='ssh feithj@10.233.1.23'
+alias awsauto='ssh feithj@usinftrfmld100'
+
+#-------------------------------------------------------------------------------
+# Utility Server Aliases
+#------------------------------------------------------------------------------
+alias beak='ssh feithj@10.181.83.32'
+
+# Puppet Servers:
+alias pupm1='ssh feithj@fanlvpupm1p.ops.invesco.net'
+alias pupcm1='ssh feithj@fanlvpupcm1p.ops.invesco.net'
+alias infppcd='ssh feithj@usinfppcld101.ops.invesco.net'
+alias infppmp='ssh feithj@usinfppmlp101.ops.invesco.net'
+alias infcups1='ssh feithj@usinfcupslp101.ops.invesco.net'
+alias yumt='ssh feithj@10.215.80.33'
+
+# Satellite Servers:
+alias sat1t='ssh feithj@usinfrhstlb101.ops.invesco.net'
+alias sat1p='ssh feithj@usinfrhstlp101.ops.invesco.net'
+
+#-------------------------------------------------------------------------------
+# Puppet Test Environment Aliases
+#------------------------------------------------------------------------------
+alias tpm='ssh -p 2222 localhost'
+alias tpc='ssh -p 2223 localhost'
+
+#-------------------------------------------------------------------------------
+# CD Shortcuts Aliases
+#------------------------------------------------------------------------------
+alias feithj1='cd /home/user/unix/feithj'
+alias ivzscripts='cd /home/app/ivz/scripts'
+alias ipname='cd /home/app/ivz/configs/build/ip-name/'
+alias inv='cd /home/app/ivz/inventory'
+alias vi='/usr/local/bin/vim'
+alias sc='cd ~/sourcecode'
+alias ivz-ans='cd ~/sourcecode/ivz-ansible'
+alias busc='cd ~/sourcecode/buildscripts'
+
+#-------------------------------------------------------------------------------
+# Parsing commands Aliases
+#------------------------------------------------------------------------------
+alias pupgrab='cat /home/app/ivz/inventory/puppetdb/puppet-inventory-unix.txt | grep '
+
