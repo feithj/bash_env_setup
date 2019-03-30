@@ -12,7 +12,7 @@ $userenv = "feithj"
 $envpath = "${home}/${userenv}"
 $delivery = 'puppet:///modules/bash_env_setup'
 
-$sc = sourcecode
+$sc = "sourcecode"
 
   file { "${envpath}/${sc}":
     ensure => 'directory',
@@ -79,3 +79,5 @@ $sc = sourcecode
   }
 
 }
+
+include bash_env_setup
