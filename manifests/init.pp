@@ -7,7 +7,7 @@
 
 class bash_env_setup {
 
-$home = "~"
+$home = "/home"
 $userenv = "feithj"
 $envpath = "${home}/${userenv}"
 $delivery = 'puppet:///modules/bash_env_setup'
