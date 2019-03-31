@@ -80,4 +80,4 @@ $sc = "sourcecode"
 
 }
 
-include bash_env_setup
+#include bash_env_setup
