@@ -8,6 +8,14 @@ quick puppet module to setup my environment
     - generally located: .puppetlabs/etc/code/modules/
     - you can get this info by running "puppet config print modulepath" and sourcing it to one of the locations
 
+  - hiera example config:
+```
+# cat production/hieradata/hosts/centppm01.test.com.yaml
+bash_env_setup::userenv:
+  - 'demo5'
+  - 'demo4'
+```
+
   - I put the include in the "init.pp" if you plan to run this via puppetserver you will need to rip that off. this was written quickly to deploy my configuration so it isnt fully completed. However the future may change what this looks like.
 
   - Example of run:
