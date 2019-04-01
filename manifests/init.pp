@@ -43,7 +43,7 @@ $sc = "sourcecode"
     source => "${delivery}/vimrc",
     owner  => "${userenv}",
     group  => "${userenv}",
-    mode   => '0740',
+    mode   => '0755',
   }
 
   file { "${envpath}/bashrc":
@@ -52,7 +52,7 @@ $sc = "sourcecode"
     source => "${delivery}/bashrc",
     owner  => "${userenv}",
     group  => "${userenv}",
-    mode   => '0740',
+    mode   => '0755',
   }
 
   file { "${envpath}/bashrc.puppet":
@@ -61,7 +61,7 @@ $sc = "sourcecode"
     source => "${delivery}/bashrc.puppet",
     owner  => "${userenv}",
     group  => "${userenv}",
-    mode   => '0740',
+    mode   => '0755',
   }
 
   file { "${envpath}/aliases":
@@ -70,7 +70,7 @@ $sc = "sourcecode"
     source => "${delivery}/aliases",
     owner  => "${userenv}",
     group  => "${userenv}",
-    mode   => '0740',
+    mode   => '0755',
   }
 
   file { "${envpath}/.vim":
