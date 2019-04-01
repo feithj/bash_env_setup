@@ -35,7 +35,7 @@ PS1='\[\e[1;31m\]\u\
 #-------------------------------------------------------------------------------
 # PATH Setup
 #-------------------------------------------------------------------------------
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/opt/puppetlabs/bin
+export PATH=/usr/local/rvm/gems/ruby-2.6.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/opt/puppetlabs/bin
 export CDPATH=~/sourcecode:~/notes                                  # Shortcuts your cd path
 
 #-------------------------------------------------------------------------------
