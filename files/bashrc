@@ -1,18 +1,22 @@
 
 #-------------------------------------------------------------------------------
-# Some Variables
+# functions, Alias, file locations..
 #-------------------------------------------------------------------------------
 
 alf=~/.aliases
+funcs=~/.functions
+hostaliases=~/.hostaliases
 
 
 #-------------------------------------------------------------------------------
-# Sourcing some files
+# Sourcing host aliases, aliases, function files
 #-------------------------------------------------------------------------------
 if [ -f ${alf} ] ; then
   . /.${alf}
 fi
 
+[[ -f ${funcs} ]] && source ./${funcs}
+[[ -f ${hostaliases} ]] && source ./${hostaliases}
 
 case ${SHELL} in
 *bash)
@@ -35,8 +39,22 @@ PS1='\[\e[1;31m\]\u\
 #-------------------------------------------------------------------------------
 # PATH Setup
 #-------------------------------------------------------------------------------
-export PATH=/usr/local/rvm/gems/ruby-2.6.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/opt/puppetlabs/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/opt/puppetlabs/bin
 export CDPATH=~/sourcecode:~/notes                                  # Shortcuts your cd path
+
+#-------------------------------------------------------------------------------
+# Ruby PATH Setup - R10k, NoGirki, etc..
+#-------------------------------------------------------------------------------
+if [ -d /usr/local/rvm ] ; then
+  export PATH=$PATH:/usr/local/rvm/rubies/ruby-2.6.0/bin:/usr/local/rvm/gems/ruby-2.6.0/bin
+fi
+
+#-------------------------------------------------------------------------------
+# Puppet PATH Setup - puppetserver, puppet etc..
+#-------------------------------------------------------------------------------
+if [[ -d /opt/puppetlabs || -d /opt/puppet ]] ; then
+  export PATH=$PATH:/opt/puppetlabs/bin:/opt/puppet/bin
+fi
 
 #-------------------------------------------------------------------------------
 # Bash options...

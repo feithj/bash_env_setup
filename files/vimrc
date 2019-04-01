@@ -21,11 +21,11 @@ call vundle#begin()
 " call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 "Plugin for markdown
 "Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 syntax on
 
