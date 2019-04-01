@@ -3,7 +3,7 @@ quick puppet module to setup my environment
 
 # Installation:
   - puppet agent atleast needs to be installed
-  - puppet module install vcsrepo
+  - puppet module install puppetlabs-vcsrepo --version 2.4.0
   - copy the repo to your module path
     - generally located: .puppetlabs/etc/code/modules/
     - you can get this info by running "puppet config print modulepath" and sourcing it to one of the locations
