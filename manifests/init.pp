@@ -30,10 +30,11 @@ $userenv.each |String $usrname| {
 
 # pulling .vim directory structure to sourcecode directory
     vcsrepo { "${envpath}/${sc}/vim":
-      ensure   => present,
-      provider => git,
-      source   => 'https://github.com/feithj/vim.git',
+      ensure     => present,
+      provider   => git,
+      source     => 'https://github.com/feithj/vim.git',
       submodules => true,
+      user       => "${usrname}"
     }
 
 #  vcsrepo { "${envpath}/${sc}/buildscripts":
