@@ -42,7 +42,13 @@ export CDPATH=~/sourcecode:~/notes                        # Shortcuts your cd pa
 #-------------------------------------------------------------------------------
 # Ruby Gem Path
 #-------------------------------------------------------------------------------
-export PATH=$PATH:/usr/local/lib/ruby/gems/2.5.0/bin
+if [ -d /usr/local/lib/ruby/gems/2.5.0/bin ] ; then
+  export PATH=$PATH:/usr/local/lib/ruby/gems/2.5.0/bin
+fi
+
+if [ -d /usr/local/rvm/gems/ruby-2.6.0/bin ] ; then
+  export PATH=$PATH:/usr/local/rvm/gems/ruby-2.6.0/bin:/usr/local/rvm/rubies/ruby-2.6.0/bin
+fi
 
 #-------------------------------------------------------------------------------
 # Bash options...
