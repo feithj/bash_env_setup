@@ -1,22 +1,18 @@
 
 #-------------------------------------------------------------------------------
-# functions, Alias, file locations..
+# Some Variables
 #-------------------------------------------------------------------------------
 
 alf=~/.aliases
-funcs=~/.functions
-hostaliases=~/.hostaliases
 
 
 #-------------------------------------------------------------------------------
-# Sourcing host aliases, aliases, function files
+# Sourcing some files
 #-------------------------------------------------------------------------------
 if [ -f ${alf} ] ; then
   . /.${alf}
 fi
 
-[[ -f ${funcs} ]] && source ./${funcs}
-[[ -f ${hostaliases} ]] && source ./${hostaliases}
 
 case ${SHELL} in
 *bash)
@@ -40,21 +36,13 @@ PS1='\[\e[1;31m\]\u\
 # PATH Setup
 #-------------------------------------------------------------------------------
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/opt/puppetlabs/bin
-export CDPATH=~/sourcecode:~/notes                                  # Shortcuts your cd path
+export CDPATH=~/sourcecode:~/notes                        # Shortcuts your cd path
+
 
 #-------------------------------------------------------------------------------
-# Ruby PATH Setup - R10k, NoGirki, etc..
+# Ruby Gem Path
 #-------------------------------------------------------------------------------
-if [ -d /usr/local/rvm ] ; then
-  export PATH=$PATH:/usr/local/rvm/rubies/ruby-2.6.0/bin:/usr/local/rvm/gems/ruby-2.6.0/bin
-fi
-
-#-------------------------------------------------------------------------------
-# Puppet PATH Setup - puppetserver, puppet etc..
-#-------------------------------------------------------------------------------
-if [[ -d /opt/puppetlabs || -d /opt/puppet ]] ; then
-  export PATH=$PATH:/opt/puppetlabs/bin:/opt/puppet/bin
-fi
+export PATH=$PATH:/usr/local/lib/ruby/gems/2.5.0/bin
 
 #-------------------------------------------------------------------------------
 # Bash options...
@@ -107,6 +95,78 @@ tcpcheck()
     fi
   fi
 }
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  is_ok
+#   DESCRIPTION:  Quick Syntax output function that puts it in color with problems
+#    PARAMETERS:
+#       RETURNS:
+#-------------------------------------------------------------------------------
+function is_ok ()
+{
+  if [ $1 == 0 ]; then
+    if [[ "$TERM" == *"xterm"* ]] || [[ "$TERM" == *"vt100"* ]] ; then
+      echo -e "\033[1mSyntax \033[32;1mOk!\033[0m"
+    else
+      echo -e "Syntax Ok!"
+    fi
+  else
+    return $1
+  fi
+}	# ----------  end of function is_ok  ----------
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  verb
+#   DESCRIPTION:  ruby syntax checker .. calls is_ok function as well
+#    PARAMETERS:
+#       RETURNS:
+#-------------------------------------------------------------------------------
+verb ()
+{
+  erb -P -x -T '-' $1 | ruby -c
+  is_ok $?
+}	# ----------  end of function verb  ----------
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  vyaml
+#   DESCRIPTION:  validate yaml file syntax .. uses is_ok function
+#    PARAMETERS:
+#       RETURNS:
+#-------------------------------------------------------------------------------
+vyaml ()
+{
+  ruby -ryaml -e "YAML.load_file '$1'"
+  is_ok $?
+
+}	# ----------  end of function vyaml  ----------
+
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  ppv
+#   DESCRIPTION:  puppet parser .. uses is_ok function
+#    PARAMETERS:
+#       RETURNS:
+#-------------------------------------------------------------------------------
+ppv ()
+{
+  puppet parser validate $*
+  is_ok $?
+}	# ----------  end of function ppv  ----------
+
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  ppl
+#   DESCRIPTION:  puppet linter - to make sure im falling in the style guide
+#                 disabled only variable on string check b/c that doesnt work
+#                 depending where that is in the code... bad code writing???
+#    PARAMETERS:
+#       RETURNS:
+#-------------------------------------------------------------------------------
+ppl ()
+{
+  puppet-lint --no-only_variable_string-check $1
+  is_ok $?
+}	# ----------  end of function ppl  ----------
 
 #-------------------------------------------------------------------------------
 # Add some color to LESS/MAN pages and grep
