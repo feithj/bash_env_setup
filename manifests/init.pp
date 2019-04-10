@@ -7,7 +7,7 @@
 
 class bash_env_setup (
 
-$home    = "/home",
+$home    = '/home',
 $userenv = ['demo1', 'demo2'],
 
 ){
@@ -15,10 +15,16 @@ $userenv = ['demo1', 'demo2'],
 # Run it through a for loop
 $userenv.each |String $usrname| {
 
-  $envpath = "${home}/${usrname}"
+  if "${usrname}" == 'root' {
+    notify {'Setting up root profile as well': }
+    $envpath = "/${usrname}"
+  } else {
+    $envpath = "${home}/${usrname}"
+  }
+
   $delivery = 'puppet:///modules/bash_env_setup'
 
-  $sc = "sourcecode"
+  $sc = 'sourcecode'
 
     file { "${envpath}/${sc}":
       ensure => 'directory',
