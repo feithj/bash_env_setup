@@ -1,4 +1,3 @@
-
 # This will require some other modules be installed
 #
 # stdlib, vcsrepo
@@ -18,9 +17,8 @@ $userenv.each |String $usrname| {
 # If user is root then lets modify some of the values since root is special
 # hopefully keep this under control with variable manipulation
   if "${usrname}" == 'root' {
-    notify {'Setting up root profile as well': }
+    #notify {'Setting up root home directory structure as well': }
     $envpath = "/${usrname}"
-
   } else {
     $envpath = "${home}/${usrname}"
   }
