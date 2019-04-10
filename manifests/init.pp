@@ -88,8 +88,9 @@ $userenv.each |String $usrname| {
     }
 
     file { "${envpath}/.vim":
-      ensure => 'link',
-      target => "${envpath}/${sc}/vim",
+      ensure  => 'link',
+      target  => "${envpath}/${sc}/vim",
+      require => Vcsrepo["${envpath}/${sc}/vim"],
     }
   }                                         # close for loop
 }                                           # close class
