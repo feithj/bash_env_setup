@@ -77,4 +77,5 @@ alias busc='cd ~/sourcecode/buildscripts'
 # Parsing commands Aliases
 #------------------------------------------------------------------------------
 alias pupgrab='cat /home/app/ivz/inventory/puppetdb/puppet-inventory-unix.txt | grep '
-
+alias myip='ip -br -c a'
+alias sstatus="systemctl status"

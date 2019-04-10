@@ -15,9 +15,12 @@ $userenv = ['demo1', 'demo2'],
 # Run it through a for loop
 $userenv.each |String $usrname| {
 
+# If user is root then lets modify some of the values since root is special
+# hopefully keep this under control with variable manipulation
   if "${usrname}" == 'root' {
     notify {'Setting up root profile as well': }
     $envpath = "/${usrname}"
+
   } else {
     $envpath = "${home}/${usrname}"
   }
