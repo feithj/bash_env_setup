@@ -46,8 +46,9 @@ if [ -d /usr/local/lib/ruby/gems/2.5.0/bin ] ; then
   export PATH=$PATH:/usr/local/lib/ruby/gems/2.5.0/bin
 fi
 
-if [ -d /usr/local/rvm/gems/ruby-2.6.0/bin ] ; then
-  export PATH=$PATH:/usr/local/rvm/gems/ruby-2.6.0/bin:/usr/local/rvm/rubies/ruby-2.6.0/bin
+# setting it up with rvm .. may have to change version path.. hardcoding temporarily
+if [ -d /usr/local/rvm ] ; then
+  export PATH=/usr/local/rvm/gems/ruby-2.6.0/bin:/usr/local/rvm/gems/ruby-2.6.0@global/bin:/usr/local/rvm/rubies/ruby-2.6.0/bin:/usr/local/rvm/bin:$PATH
 fi
 
 #-------------------------------------------------------------------------------
