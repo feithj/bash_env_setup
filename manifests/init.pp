@@ -11,7 +11,7 @@ $userenv = ['demo1', 'demo2'],
 
 ){
 
-# Run it through a for loop
+# Run it through a for loop - known as puppet iteration
 $userenv.each |String $usrname| {
 
 # If user is root then lets modify some of the values since root is special
