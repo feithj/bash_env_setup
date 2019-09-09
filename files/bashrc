@@ -49,6 +49,8 @@ fi
 # setting it up with rvm .. may have to change version path.. hardcoding temporarily
 if [ -d /usr/local/rvm ] ; then
   export PATH=/usr/local/rvm/gems/ruby-2.6.0/bin:/usr/local/rvm/gems/ruby-2.6.0@global/bin:/usr/local/rvm/rubies/ruby-2.6.0/bin:/usr/local/rvm/bin:$PATH
+  # disabling the use of outside ruby... just enable it if you want it
+  rvm use system
 fi
 
 #-------------------------------------------------------------------------------
